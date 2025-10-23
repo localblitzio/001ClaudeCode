@@ -3,34 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator App</title>
+    <title>HP 10bII Financial Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="calculator">
-        <div class="display">
-            <div class="previous-operand"></div>
-            <div class="current-operand">0</div>
+        <div class="header">
+            <div class="brand">HP 10bII Financial Calculator</div>
+            <div class="mode-indicator">
+                <span id="begin-end">END</span>
+                <span id="mode">CALC</span>
+            </div>
         </div>
-        <button class="span-two clear">AC</button>
-        <button class="delete">DEL</button>
-        <button class="operator">÷</button>
-        <button class="number">7</button>
-        <button class="number">8</button>
-        <button class="number">9</button>
-        <button class="operator">×</button>
-        <button class="number">4</button>
-        <button class="number">5</button>
-        <button class="number">6</button>
-        <button class="operator">-</button>
-        <button class="number">1</button>
-        <button class="number">2</button>
-        <button class="number">3</button>
-        <button class="operator">+</button>
-        <button class="number">0</button>
-        <button class="decimal">.</button>
-        <button class="span-two equals">=</button>
+
+        <div class="display">
+            <div class="status-line">
+                <span id="memory-indicator"></span>
+                <span id="calculation-mode"></span>
+            </div>
+            <div class="main-display">0</div>
+        </div>
+
+        <!-- Row 1: Financial Keys -->
+        <div class="button-row">
+            <button class="financial-key" data-primary="N" title="Number of periods">N</button>
+            <button class="financial-key" data-primary="I/YR" title="Interest rate per year">I/YR</button>
+            <button class="financial-key" data-primary="PV" title="Present Value">PV</button>
+            <button class="financial-key" data-primary="PMT" title="Payment">PMT</button>
+            <button class="financial-key" data-primary="FV" title="Future Value">FV</button>
+        </div>
+
+        <!-- Row 2: Shift/Input/Clear -->
+        <div class="button-row">
+            <button class="shift-key" data-primary="SHIFT" id="shift-btn">⬆ SHIFT</button>
+            <button class="function-key" data-primary="INPUT" data-shift="DELETE">INPUT</button>
+            <button class="function-key clear" data-primary="C" data-shift="CLEAR ALL">C</button>
+            <button class="operator-key" data-primary="/" data-shift="1/x">÷</button>
+            <button class="function-key" data-primary="+/-" data-shift="CFj">+/-</button>
+        </div>
+
+        <!-- Row 3: Numbers 7-9 and operations -->
+        <div class="button-row">
+            <button class="financial-key" data-primary="NPV" data-shift="NJ" title="Net Present Value">NPV</button>
+            <button class="number" data-primary="7" data-shift="P/YR">7</button>
+            <button class="number" data-primary="8" data-shift="BEG/END">8</button>
+            <button class="number" data-primary="9" data-shift="ROUND">9</button>
+            <button class="operator-key" data-primary="*" data-shift="x²">×</button>
+        </div>
+
+        <!-- Row 4: Numbers 4-6 and operations -->
+        <div class="button-row">
+            <button class="financial-key" data-primary="IRR" data-shift="CFo" title="Internal Rate of Return">IRR</button>
+            <button class="number" data-primary="4" data-shift="FV">4</button>
+            <button class="number" data-primary="5" data-shift="PMT">5</button>
+            <button class="number" data-primary="6" data-shift="PV">6</button>
+            <button class="operator-key" data-primary="-" data-shift="√x">-</button>
+        </div>
+
+        <!-- Row 5: Numbers 1-3 and operations -->
+        <div class="button-row">
+            <button class="financial-key" data-primary="%" data-shift="%CHG" title="Percentage">%</button>
+            <button class="number" data-primary="1" data-shift="I/YR">1</button>
+            <button class="number" data-primary="2" data-shift="N">2</button>
+            <button class="number" data-primary="3" data-shift="MEM">3</button>
+            <button class="operator-key" data-primary="+" data-shift="y^x">+</button>
+        </div>
+
+        <!-- Row 6: Zero and decimal -->
+        <div class="button-row">
+            <button class="function-key" data-primary="RCL" data-shift="STO" title="Recall">RCL</button>
+            <button class="number zero" data-primary="0" data-shift="xP/YR">0</button>
+            <button class="decimal" data-primary="." data-shift="x!">.</button>
+            <button class="equals" data-primary="=" data-shift="CALC">=</button>
+        </div>
+
+        <!-- Help Panel -->
+        <div class="help-panel" id="help-panel">
+            <h3>Quick Guide</h3>
+            <div class="help-section">
+                <h4>TVM Calculations:</h4>
+                <p>1. Enter known values (N, I/YR, PV, PMT, FV)</p>
+                <p>2. Press the key for the unknown value</p>
+            </div>
+            <div class="help-section">
+                <h4>Cash Flow (NPV/IRR):</h4>
+                <p>1. SHIFT + CFo: Enter initial cash flow</p>
+                <p>2. SHIFT + CFj: Enter subsequent flows</p>
+                <p>3. NPV or IRR to calculate</p>
+            </div>
+            <div class="help-section">
+                <h4>Memory:</h4>
+                <p>SHIFT + STO: Store value</p>
+                <p>RCL: Recall value</p>
+            </div>
+        </div>
+
+        <button class="help-toggle" id="help-toggle">?</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
